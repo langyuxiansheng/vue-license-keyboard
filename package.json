@@ -1,6 +1,6 @@
 {
     "name": "vue-license-keyboard",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "yxs",
     "description": "一个基于vue的车牌专用输入键盘",
     "main":"lib/tag-textarea.umd.min.js",
