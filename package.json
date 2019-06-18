@@ -1,7 +1,7 @@
 {
     "name": "vue-license-keyboard",
     "version": "1.0.0",
-    "author": "1096432931@qq.com 狼丶宇先森",
+    "author": "yxs",
     "description": "一个基于vue的车牌专用输入键盘",
     "main":"lib/tag-textarea.umd.min.js",
     "private": false,
@@ -26,5 +26,9 @@
         "less": "^3.9.0",
         "less-loader": "^5.0.0",
         "vue-template-compiler": "^2.6.10"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:langyuxiansheng/vue-license-keyboard.git"
     }
 }
