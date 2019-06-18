@@ -9,6 +9,23 @@ import LicenseKeyboard from 'vue-license-keyboard';
 
 Vue.use(LicenseKeyboard);
 ```
+### 图片展示 输入带预览
+---
+车牌汉字输入
+![车牌汉字输入](https://github.com/langyuxiansheng/vue-license-keyboard/blob/master/images/l1.png)
+
+车牌数字输入
+![车牌数字输入](https://github.com/langyuxiansheng/vue-license-keyboard/blob/master/images/l2.png)
+
+车牌数字输入
+![车牌字母输入](https://github.com/langyuxiansheng/vue-license-keyboard/blob/master/images/l2.png)
+
+更多功能正在完善中......
+如果您有什么好的建议请留言
+
+---
+
+
 ```
 ## 二次开发 下载项目
 
