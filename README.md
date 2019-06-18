@@ -6,6 +6,7 @@ npm i vue-license-keyboard --save
 ```
 ```
 import LicenseKeyboard from 'vue-license-keyboard';
+import 'vue-license-keyboard/lib/vue-license-keyboard.css';
 
 Vue.use(LicenseKeyboard);
 ```

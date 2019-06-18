@@ -1,16 +1,16 @@
 {
     "name": "vue-license-keyboard",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "author": "yxs",
     "description": "一个基于vue的车牌专用输入键盘",
-    "main":"lib/tag-textarea.umd.min.js",
+    "main":"lib/vue-license-keyboard.umd.min.js",
     "private": false,
     "license": "MIT",
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
-        "lib": "vue-cli-service build --target lib --name tag-textarea --dest lib packages/index.js"
+        "lib": "vue-cli-service build --target lib --name vue-license-keyboard --dest lib packages/index.js"
     },
     "dependencies": {
         "core-js": "^2.6.5",
