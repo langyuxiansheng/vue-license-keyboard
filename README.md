@@ -23,8 +23,37 @@ Vue.use(LicenseKeyboard);
 更多功能正在完善中......
 如果您有什么好的建议请留言
 
----
+你可以这样使用: 
 
+```
+<el-input
+slot="query-4"
+v-model.trim="table.queryData.licenseNumber"
+placeholder="车牌号"
+>
+    <template slot="prepend">
+        <LicenseKeyboard v-model="table.queryData.licenseNumber" title="软键盘" />
+    </template>
+</el-input>
+```
+
+直接使用v-model 进行绑定
+
+也可以使用 @confirm="handleInput"  进行回调
+```
+methods:{
+     handleInput(value){
+        console.log('您输入的车牌为:',value);
+     }
+}
+```
+也可以使用  
+```
+<LicenseKeyboard v-model="table.queryData.licenseNumber" title="软键盘" > 
+    这里是你的自定义图标或者内容
+</LicenseKeyboard>
+```
+---
 
 ```
 ## 二次开发 下载项目
