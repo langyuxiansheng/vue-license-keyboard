@@ -24,6 +24,8 @@ Vue.use(LicenseKeyboard);
 更多功能正在完善中......
 如果您有什么好的建议请留言
 
+## [在线演示](https://langyuxiansheng.github.io/vue-license-keyboard/)
+
 你可以这样使用: 
 
 ```
@@ -83,6 +85,11 @@ npm run test
 ```
 npm run lint
 ```
+## 缺陷 & 后期计划
+
+> 车牌输入中并未加入车牌验证.即可能会出现乱输入的情况,这个后期会考虑的;
+> 根据有网友留言说想加入搜索功能(可能有些人并不知道某些省的简称是什么);
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
