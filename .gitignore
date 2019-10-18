@@ -2,7 +2,6 @@
 node_modules/
 package-lock.json
 *.map
-*.html
 
 # local env files
 .env.local
