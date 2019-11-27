@@ -1,42 +1,42 @@
 <template>
-    <div class="app-license-keyboard">
+    <div class="app-license-keyboard" :class="[customClass]">
         <span @click="show()">
             <slot>
                 <i class="el-icon-s-grid icon" /> 
                 <font>软键盘</font>
             </slot>
         </span>
-        <div v-if="isShow" class="license-container">
+        <div v-if="isShow" class="license-container" :class="[customLicenseClass]" :style="{background:keyboardBg,opacity,fontSize}">
             <div class="license-bar">
-                <span class="res-view">预览: {{ licenseNumber }}</span>
+                <span class="res-view" :style="{fontSize}">预览: {{ licenseNumber }}</span>
                 <div>
-                    <span class="confirm" @click="confirm()">完成</span>
-                    <span class="close" @click="close()">关闭</span>
+                    <span class="confirm" :style="{fontSize}" @click="confirm()">完成</span>
+                    <span class="close" :style="{fontSize}" @click="close()">关闭</span>
                 </div>
             </div>
             <template v-if="type">
                 <template v-for="(items,k) in licenseNumberModels">
                     <div :key="k" class="license-buttons">
-                        <span v-if="k== 3" :disabled="!licenseNumber" class="model" :class="{'disabled-btn':!licenseNumber}" @click="toggle()">
+                        <span v-if="k== 3" :disabled="!licenseNumber" class="model" :class="{'disabled-btn':!licenseNumber}" :style="keyStyle" @click="toggle()">
                             切换
                         </span>
                         <template v-for="(item,j) in items">
-                            <span :key="j" @click="handleChinese(item)">{{ item }}</span>
+                            <span :key="j" @click="handleChinese(item)" :style="keyStyle">{{ item }}</span>
                         </template>
-                        <span v-if="k== 3" class="delete" :disabled="!licenseNumber" :class="{'disabled-btn':!licenseNumber}">删除</span>
+                        <span v-if="k== 3" class="delete" :disabled="!licenseNumber" :class="{'disabled-btn':!licenseNumber}" :style="keyStyle">删除</span>
                     </div>
                 </template>
             </template>
             <template v-else>
                 <template v-for="(items,k) in abcAndNums">
                     <div :key="k" class="license-buttons">
-                        <span v-if="k== 3" :disabled="!licenseNumber" class="model" :class="{'disabled-btn':!licenseNumber}" @click="toggle()">
+                        <span v-if="k== 3" :disabled="!licenseNumber" class="model" :class="{'disabled-btn':!licenseNumber}" :style="keyStyle" @click="toggle()">
                             切换
                         </span>
                         <template v-for="(item,j) in items">
-                            <span :key="j" @click="handleAbcNum(item)">{{ item }}</span>
+                            <span :key="j" @click="handleAbcNum(item)" :style="keyStyle">{{ item }}</span>
                         </template>
-                        <span v-if="k== 3" class="delete" :disabled="!licenseNumber" :class="{'disabled-btn':!licenseNumber}" @click="deleteLicense()">删除</span>
+                        <span v-if="k== 3" class="delete" :disabled="!licenseNumber" :class="{'disabled-btn':!licenseNumber}" :style="keyStyle" @click="deleteLicense()">删除</span>
                     </div>
                 </template>
             </template>
@@ -44,6 +44,7 @@
     </div>
 </template>
 <script>
+const theme = '#3d51aa';
 export default {
     name:'LicenseKeyboard',
     model: {
@@ -55,6 +56,87 @@ export default {
             required: false,
             type: [String],
             default: null
+        },
+
+        //顶级节点自定义的class
+        customClass: {
+            required: false,
+            type: [String],
+            default: null
+        },
+
+        //键盘容器节点自定义的class
+        customLicenseClass: {
+            required: false,
+            type: [String],
+            default: null
+        },
+
+        //键盘背景
+        keyboardBg:{
+            required: false,
+            type: [String],
+            default: null
+        },
+
+        //键盘字体颜色
+        fontColor:{
+            required: false,
+            type: [String],
+            default: null
+        },
+
+        //键盘按钮的边框颜色
+        keyBorderColor:{
+            required: false,
+            type: [String],
+            default: theme
+        },
+
+        //键盘背景
+        keyBg:{ 
+            required: false,
+            type: [String],
+            default: null
+        },
+
+        //键盘的透明度
+        opacity:{
+            required: false,
+            type: [Number],
+            default: 1
+        },
+
+        //默认的字体大小 16px => 1rem
+        fontSize:{
+            required: false,
+            type: [String],
+            default: '1rem'
+        },
+
+        //键盘的默认圆角
+        borderRadius:{  
+            required: false,
+            type: [String],
+            default: null
+        },
+
+        //是否只在移动端使用 默认false,在pc端使用的时候,建议全部使用手动配置字体大小的方法,区别在于是否会开启字体响应,其中使用了autosize的方法,会改变跟元素的font-size
+        isMobile:{
+            required: false,
+            type: [Boolean],
+            default: false
+        }
+    },
+    computed:{
+        keyStyle(){
+            return {
+                color:this.fontColor,
+                background:this.keyBg,
+                borderColor:this.keyBorderColor,
+                fontSize:this.fontSize,
+                borderRadius: this.borderRadius
+            }
         }
     },
     data() {
@@ -63,13 +145,13 @@ export default {
             licenseNumberModels: [
                 ['川', '京', '苏', '津', '浙', '渝', '冀', '皖', '琼', '鲁'],
                 ['闽', '贵', '新', '晋', '赣', '云', '宁', '蒙', '豫', '藏'],
-                ['港', '辽', '鄂', '陕', '澳', '吉', '湘', '甘', '台', '粤'],
-                ['青', '沪', '桂', '黑', '军', '警', '学']
+                ['港', '辽', '桂', '陕', '澳', '吉', '湘', '甘', '台', '粤'],
+                ['青', '沪', '鄂', '黑', '军', '警', '学']
             ],
             abcAndNums: [
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
-                [`Q`, `W`, `E`, `R`, `T`, `Y`, `U`, `I`, `O`],
-                [`P`, `A`, `S`, `D`, `F`, `G`, `H`, `J`, `K`, `L`],
+                [`Q`, `W`, `E`, `R`, `T`, `Y`, `U`, `I`, `O`,`P`],
+                [`A`, `S`, `D`, `F`, `G`, `H`, `J`, `K`, `L`],
                 [`Z`, `X`, `C`, `V`, `B`, `N`, `M`]
             ],
             type: true,
@@ -84,7 +166,39 @@ export default {
             }
         }
     },
+    mounted(){
+        if(this.isMobile){
+            this.init();
+        }
+      
+    },
     methods: {
+
+        init(){
+            !(function(win, doc){
+                const setFontSize = ()=> {
+                    // 获取window 宽度
+                    // zepto实现 $(window).width()就是这么干的
+                    let winWidth = window.innerWidth;
+                    let size = (winWidth / 375) * 16;
+                    doc.documentElement.style.fontSize =  size + 'px';
+                }
+                let evt = 'onorientationchange' in win ? 'orientationchange' : 'onresize';
+                let timer = null;
+                win.addEventListener(evt, function() {
+                    clearTimeout(timer);
+                    timer = setTimeout(setFontSize, 300);
+                }, false);
+                win.addEventListener('pageshow', function(e) {
+                    if (e.persisted) {
+                        clearTimeout(timer);
+                        timer = setTimeout(setFontSize, 300);
+                    }
+                }, false);
+                //初始化
+                setFontSize();
+            }(window, document));
+        },
 
         /**
          * 弹出键盘
@@ -153,7 +267,7 @@ export default {
 <style lang="less" scoped>
 .app-license-keyboard{
     .icon{
-        font-size: 18px;
+        font-size: 1.125rem;
         cursor: pointer;
     }
     font{
@@ -165,17 +279,17 @@ export default {
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 520px;
+        height: auto;
         z-index: 99999999;
         background: rgba(255, 255, 255, .9);
-        box-shadow: 0px -4px 10px 0px #3d51aa;
+        box-shadow: 0 .25rem .375rem 0 #3d51aa;
         .license-bar{
             display: flex;
             justify-content: space-between;
-            padding: 20px 40px;
+            padding: .25rem 1rem;
             color: #f00;
             font-weight: bold;
-            font-size: 24px;
+            font-size: .75rem;
             span{
                 align-self: center;
             }
@@ -184,28 +298,27 @@ export default {
                 cursor: pointer;
             }
             .close{
-                margin-left: 20px;
+                margin-left: 1.25rem;
             }
         }
         .license-buttons{
-            padding: 0 25px;
+            padding: 0 .625rem;
             margin: 0 auto;
             display: flex;
             flex-wrap:wrap;
-            font-size: 48px;
             justify-content: center;
             span{
-                margin: 10px;
-                padding: 10px 15px;
                 flex: 1;
-                align-self: center;
+                margin: .25rem .125rem;
+                padding: .25rem 0;
                 text-align: center;
-                white-space:nowrap;
+                white-space: nowrap;
                 color: #3d51aa;
-                border: 2px solid #3d51aa;
-                border-radius: 5px;
+                border: .0625rem solid #3d51aa;
+                border-radius: .25rem;
                 cursor: pointer;
                 transition: color,background .2s ease-in;
+                font-size: .875rem;
                 &:hover{
                     background: #3d51aa;
                     color: #fff;
@@ -218,6 +331,7 @@ export default {
             }
             .disabled-btn{
                 color: #ccc;
+                cursor:not-allowed;
             }
         }
     }

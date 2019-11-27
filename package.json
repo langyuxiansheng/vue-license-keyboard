@@ -1,13 +1,13 @@
 {
     "name": "vue-license-keyboard",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "author": "yxs",
     "description": "一个基于vue的车牌专用输入键盘",
     "main":"lib/vue-license-keyboard.umd.min.js",
     "private": false,
     "license": "MIT",
     "scripts": {
-        "serve": "vue-cli-service serve",
+        "dev": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
         "lib": "vue-cli-service build --target lib --name vue-license-keyboard --dest lib packages/index.js"

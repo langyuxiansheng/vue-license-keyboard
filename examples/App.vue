@@ -1,13 +1,23 @@
 <template>
     <div id="app">
         <p>键盘输入的值:  {{ value }}</p>
-        <LicenseKeyboard class="license-keyboard" v-model="value"/>
-        <div class="demo">
+        <LicenseKeyboard 
+        class="license-keyboard" 
+        v-model="value"/>
+        <!-- 
+            isMobile
+            customClass="custom-class"
+            customLicenseClass="customLicenseClass"
+            keyboardBg="#1ed289" 
+            fontColor="chocolate" 
+            keyBorderColor="#ff0"
+         -->
+        <!-- <div class="demo">
             <h4 class="title">示例图片</h4>
             <img src="./assets/images/l1.png" alt="车牌汉字输入">
             <img src="./assets/images/l2.png" alt="车牌数字输入">
             <img src="./assets/images/l3.png" alt="车牌数字输入">
-        </div>
+        </div> -->
     </div>
 </template>
 <script>

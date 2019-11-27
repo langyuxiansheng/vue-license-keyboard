@@ -21,6 +21,11 @@ Vue.use(LicenseKeyboard);
 车牌数字输入
 ![车牌字母输入](https://github.com/langyuxiansheng/vue-license-keyboard/blob/master/images/l2.png)
 
+移动端竖屏展示
+![移动端竖屏展示](https://github.com/langyuxiansheng/vue-license-keyboard/blob/master/images/l4.jpg)
+移动端横屏展示
+![移动端横屏展示](https://github.com/langyuxiansheng/vue-license-keyboard/blob/master/images/l5.jpg)
+
 更多功能正在完善中......
 如果您有什么好的建议请留言
 
@@ -28,7 +33,7 @@ Vue.use(LicenseKeyboard);
 
 你可以这样使用: 
 
-```
+```html
 <el-input
 slot="query-4"
 v-model.trim="table.queryData.licenseNumber"
@@ -43,7 +48,7 @@ placeholder="车牌号"
 直接使用v-model 进行绑定
 
 也可以使用 @confirm="handleInput"  进行回调
-```
+```javascript
 methods:{
      handleInput(value){
         console.log('您输入的车牌为:',value);
@@ -51,10 +56,84 @@ methods:{
 }
 ```
 也可以使用  
-```
+```html
 <LicenseKeyboard v-model="table.queryData.licenseNumber" title="软键盘" > 
     这里是你的自定义图标或者内容
 </LicenseKeyboard>
+```
+
+新增的props属性配置
+
+```javascript
+    //顶级节点自定义的class
+    customClass: {
+        required: false,
+        type: [String],
+        default: null
+    },
+
+    //键盘容器节点自定义的class
+    customLicenseClass: {
+        required: false,
+        type: [String],
+        default: null
+    },
+
+    //键盘背景
+    keyboardBg:{
+        required: false,
+        type: [String],
+        default: null
+    },
+
+    //键盘字体颜色
+    fontColor:{
+        required: false,
+        type: [String],
+        default: null
+    },
+
+    //键盘按钮的边框颜色
+    keyBorderColor:{
+        required: false,
+        type: [String],
+        default: theme
+    },
+
+    //键盘背景
+    keyBg:{ 
+        required: false,
+        type: [String],
+        default: null
+    },
+
+    //键盘的透明度
+    opacity:{
+        required: false,
+        type: [Number],
+        default: 1
+    },
+
+    //默认的字体大小 16px => 1rem
+    fontSize:{
+        required: false,
+        type: [String],
+        default: '1rem'
+    },
+
+    //键盘的默认圆角
+    borderRadius:{  
+        required: false,
+        type: [String],
+        default: null
+    },
+
+    //是否只在移动端使用 默认false,在pc端使用的时候,建议全部使用手动配置字体大小的方法,区别在于是否会开启字体响应,其中使用了autosize的方法,会改变跟元素的font-size
+    isMobile:{
+        required: false,
+        type: [Boolean],
+        default: false
+    }
 ```
 ---
 
@@ -68,7 +147,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev
 ```
 
 ### Compiles and minifies for production
