@@ -169,6 +169,10 @@ npm run lint
 > 车牌输入中并未加入车牌验证.即可能会出现乱输入的情况,这个后期会考虑的;
 > 根据有网友留言说想加入搜索功能(可能有些人并不知道某些省的简称是什么);
 
+## 更新日志
+
+> v1.0.5 新增适应移动端,且增加自定义属性和样式;
+> v1.0.4 修复bug,目前已迁移到dev_v1.0.4 分支
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
