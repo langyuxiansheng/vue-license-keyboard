@@ -135,6 +135,7 @@ methods:{
         default: false
     }
 ```
+ps: 如果目前的样式无法满足需求,可以使用自定义的class去覆盖原有的style样式.
 ---
 
 ```
